@@ -25,7 +25,7 @@ $ ->
       success: (data, textStatus, jqXHR) ->
         wiggleViewModel.average(data.average)   
 
-  $("input#your_opinion").on "change keyup", -> 
+  $("input#your_opinion").on "mouseup keyup", -> 
     update_opinion(this.value)
 
   poll_for_new_average = ->

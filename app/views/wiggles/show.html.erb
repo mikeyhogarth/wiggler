@@ -5,11 +5,13 @@
 
 <%= content_tag :h1, @wiggle.name %>
 
-<div class = "average">
-  <span data-bind="text: average"></span>
+<div class = "average-area">
+  <div class = "average">
+    <span data-bind="text: average"></span>
+  </div>
 </div>
 
-<div>
+<div class = "your-opinion-controls">
   <p><strong>Your opinion:</strong> <span data-bind="text: yourOpinion"></span><p>
-  <%= range_field_tag :your_opinion, @your_opinion.value, :in => (1..10), :data => {:bind => "value: yourOpinion"} %>
+  <%= range_field_tag :your_opinion, @your_opinion.value, :in => (0..10), :step => 0.1, :data => {:bind => "value: yourOpinion"} %>
 </div>

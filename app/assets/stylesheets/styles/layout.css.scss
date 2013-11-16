@@ -1,9 +1,13 @@
+body {
+ margin: 0;
+}
+
 div.container {
     @include outer-container;
 }
 
 .average {
-  width: 300px;
+  width: 400px;
   height: 200px;
   background-color: #FF5500;
   color: white;
@@ -11,4 +15,37 @@ div.container {
   font-size: 9em;
   text-align: center;
   border: 10px #DE4604 solid;
+  display: inline-block;
+}
+
+.average-area {
+  text-align: center;
+  width: 100%;
+}
+
+.your-opinion-controls {
+  input {
+    width: 100%;
+  }
+}
+
+.top-bar
+{
+  height: 100px;
+  padding: 10px;
+  background-color: black;
+  color: white;
+
+  .login-controls {
+    float: right;
+  }
+
+  .title {
+    float: left;
+    a{
+      text-decoration: none;
+      color: white;
+    }
+
+  }
 }
