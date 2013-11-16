@@ -1,0 +1,15 @@
+<%= viewbag   :initial_average  => @wiggle.average_opinion,
+              :polling_url      => average_wiggle_url(@wiggle),
+              :update_url       => url_for(@your_opinion)
+%>
+
+<%= content_tag :h1, @wiggle.name %>
+
+<div class = "average">
+  <span data-bind="text: average"></span>
+</div>
+
+<div>
+  <p><strong>Your opinion:</strong> <span data-bind="text: yourOpinion"></span><p>
+  <%= range_field_tag :your_opinion, @your_opinion.value, :in => (1..10), :data => {:bind => "value: yourOpinion"} %>
+</div>
