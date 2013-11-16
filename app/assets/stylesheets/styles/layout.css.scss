@@ -23,6 +23,19 @@ div.container {
   width: 100%;
 }
 
+.opinion-button {
+  background-color: #0F8AD6;
+  color: white;
+  text-decoration: none;
+  padding: 20px;
+  width: 100px;
+  height: 60px;
+  display: inline-block;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
+}
+
 .your-opinion-controls {
   input {
     width: 100%;

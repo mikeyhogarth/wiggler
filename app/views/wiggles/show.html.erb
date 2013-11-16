@@ -1,4 +1,5 @@
 <%= viewbag   :initial_average  => @wiggle.average_opinion,
+              :initial_opinion  => @your_opinion.value,
               :polling_url      => average_wiggle_url(@wiggle),
               :update_url       => url_for(@your_opinion)
 %>
@@ -9,6 +10,14 @@
   <div class = "average">
     <span data-bind="text: average"></span>
   </div>
+  
+  <br />
+  <br />
+  <br />
+
+  <a href = "#" class = "opinion-button opinion-down">DOWN!</a>
+  <a href = "#" class = "opinion-button opinion-up">UP!</a>
+
 </div>
 
 <div class = "your-opinion-controls">
