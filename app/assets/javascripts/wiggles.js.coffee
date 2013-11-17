@@ -7,10 +7,12 @@ class WiggleViewModel
     @average = ko.observable average
   
   increment: ->
-    @yourOpinion(@yourOpinion() + 1) if @yourOpinion() < @max
-
+    @yourOpinion(parseFloat(@yourOpinion()) + 1) 
+    @yourOpinion(@max) if @yourOpinion() > @max
+  
   decrement: -> 
-    @yourOpinion(@yourOpinion() - 1) if @yourOpinion() > @min
+    @yourOpinion(parseFloat(@yourOpinion()) - 1)     
+    @yourOpinion(@min) if @yourOpinion() < @min
 
 
 $ ->
@@ -25,7 +27,7 @@ $ ->
   update_opinion = (new_value) ->
     $.ajax update_url,
       type: 'PUT'
-      data: { value: wiggleViewModel.yourOpinion() },
+      data: { opinion: value: wiggleViewModel.yourOpinion() },
       dataType: 'json'
       error: (jqXHR, textStatus, errorThrown) ->
         console.log(textStatus)

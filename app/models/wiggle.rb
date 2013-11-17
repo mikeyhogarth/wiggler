@@ -3,12 +3,12 @@ class Wiggle < ActiveRecord::Base
   has_many :opinions
 
   def average_opinion
-    average_value = opinions.average :value
+    average_opinion = opinions.average :value 
 
-    if(average_value.nil?)
-      0
+    if average_opinion.nil?
+      return 0
     else
-      average_value.ceil 1
+      return average_opinion.round(2)
     end
   end
 end

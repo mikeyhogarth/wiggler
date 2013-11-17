@@ -7,7 +7,11 @@ class WigglesController < ApplicationController
   end
 
   def average
-     render :json => { :average => Wiggle.find(params[:id]).average_opinion }
+    respond_to do |format|
+      format.json do
+        render :json => { :average => Wiggle.find(params[:id]).average_opinion }
+      end
+    end
   end
 
 end
