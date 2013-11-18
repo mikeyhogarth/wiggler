@@ -19,7 +19,7 @@ describe OpinionsController do
 
   it "stops users from updating each others opinions" do
     login_as :user
-    expect{ put :update, :id => @opinion }.to raise_error(RuntimeError)
+    expect{ put :update, :id => @opinion }.to raise_error(CanCan::AccessDenied)
   end
 
 end

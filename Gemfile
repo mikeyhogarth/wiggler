@@ -32,8 +32,9 @@ gem 'jbuilder', '~> 1.2'
 # Front end framework
 gem 'neat'
 
-# Authentication
+# Authentication and Authorisation
 gem 'devise'
+gem 'cancan'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
