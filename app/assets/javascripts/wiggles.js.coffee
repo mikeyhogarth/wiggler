@@ -60,7 +60,7 @@ $ ->
   update_url      = document.viewbag.update_url
   initial_opinion = document.viewbag.initial_opinion
 
-  document.wiggleViewModel = new WiggleViewModel(parseFloat(initial_opinion), initial_average)  
+  document.wiggleViewModel = new WiggleViewModel(parseInt(initial_opinion), initial_average)  
   ko.applyBindings document.wiggleViewModel
   
   page = new Page(initial_average, initial_opinion, update_url);
