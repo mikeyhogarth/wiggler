@@ -36,6 +36,10 @@ gem 'neat'
 gem 'devise'
 gem 'cancan'
 
+# Faye services
+gem "private_pub"
+gem "thin"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

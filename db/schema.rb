@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20131116112703) do
 
   create_table "opinions", force: true do |t|
-    t.decimal  "value",      precision: 4, scale: 2
+    t.integer  "value",      limit: 1
     t.integer  "wiggle_id"
     t.datetime "created_at"
     t.datetime "updated_at"

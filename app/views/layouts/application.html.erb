@@ -7,6 +7,8 @@
   <%= yield :viewbag %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag_with_check params[:controller] %>
+  <%= yield :page_specific_js %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>

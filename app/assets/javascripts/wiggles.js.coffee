@@ -1,11 +1,23 @@
 class WiggleViewModel 
   constructor: (opinion, average) -> 
-    @max = 10
+    @max = 100
     @min = 0
 
     @yourOpinion = ko.observable opinion
     @average = ko.observable average
-  
+    @graph = new JustGage({
+      id: "gauge", 
+      value: @average(), 
+      min: @min,
+      max: @max,
+      counter: true,
+    }) 
+
+
+  update_average: (new_value) ->
+    @average(new_value)
+    @graph.refresh(new_value)
+
   increment: ->
     @yourOpinion(parseFloat(@yourOpinion()) + 1) 
     @yourOpinion(@max) if @yourOpinion() > @max
@@ -21,39 +33,26 @@ $ ->
   update_url      = document.viewbag.update_url
   initial_opinion = document.viewbag.initial_opinion
 
-  wiggleViewModel = new WiggleViewModel(parseFloat(initial_opinion), initial_average)
-  ko.applyBindings wiggleViewModel
+  document.wiggleViewModel = new WiggleViewModel(parseFloat(initial_opinion), initial_average)  
+  ko.applyBindings document.wiggleViewModel
 
   update_opinion = (new_value) ->
     $.ajax update_url,
       type: 'PUT'
-      data: { opinion: value: wiggleViewModel.yourOpinion() },
+      data: { opinion: value: document.wiggleViewModel.yourOpinion() },
       dataType: 'json'
-      error: (jqXHR, textStatus, errorThrown) ->
-        console.log(textStatus)
-      success: (data, textStatus, jqXHR) ->
-        wiggleViewModel.average(data.average)   
 
   $(".opinion-up").on "click", (e) -> 
     e.preventDefault()
-    wiggleViewModel.increment()
+    document.wiggleViewModel.increment()
     update_opinion()
 
   $(".opinion-down").on "click", (e) -> 
     e.preventDefault()
-    wiggleViewModel.decrement()
+    document.wiggleViewModel.decrement()
     update_opinion()
 
   $("input#your_opinion").on "mouseup keyup touchend", -> 
     update_opinion()
 
-  poll_for_new_average = ->
-    $.ajax polling_url,
-      type: 'GET'
-      dataType: 'json'
-      error: (jqXHR, textStatus, errorThrown) ->
-        console.log(textStatus)
-      success: (data, textStatus, jqXHR) ->
-        wiggleViewModel.average(data.average)
-
-  setInterval(poll_for_new_average, 2000)
+ 

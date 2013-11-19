@@ -4,17 +4,16 @@
               :update_url       => url_for(@your_opinion)
 %>
 
+<%= subscribe_to "/wiggles/#{@wiggle.id}" %>
+
 <%= content_tag :h1, @wiggle.name %>
 
 <div class = "average-area">
-  <div class = "average">
-    <span data-bind="text: average"></span>
+  <div style = "width: 400px; height: 320px; display: inline-block;">
+    <div id="gauge"></div>  
   </div>
-  
-  <br />
-  <br />
-  <br />
 
+  <hr style = "border: none;" />
   <a href = "#" class = "opinion-button opinion-down">DOWN!</a>
   <a href = "#" class = "opinion-button opinion-up">UP!</a>
 
@@ -22,5 +21,5 @@
 
 <div class = "your-opinion-controls">
   <p><strong>Your opinion:</strong> <span data-bind="text: yourOpinion"></span><p>
-  <%= range_field_tag :your_opinion, @your_opinion.value, :in => (0..10), :step => 0.1, :data => {:bind => "value: yourOpinion"} %>
+  <%= range_field_tag :your_opinion, @your_opinion.value, :in => (0..100), :step => 1, :data => {:bind => "value: yourOpinion"} %>
 </div>

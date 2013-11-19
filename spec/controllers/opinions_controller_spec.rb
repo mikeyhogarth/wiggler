@@ -6,15 +6,13 @@ describe OpinionsController do
     @opinion = create(:opinion)
   end
 
-  it "allows users to update their own opinion, respond with JSON representing the change" do
+  it "allows users to update their own opinion via javascript" do
     sign_in @opinion.user
  
-    put :update, :id => @opinion, :opinion => { :value => 5.0 }
+    put :update, :id => @opinion, :opinion => { :value => 5.0 }, :format => :js
     assigns(:opinion).should_not be_nil
 
     expect(response).to be_success
-    parsed_json = JSON.parse(response.body)
-    parsed_json.keys.should include("your_opinion", "average")
   end
 
   it "stops users from updating each others opinions" do

@@ -3,7 +3,12 @@ class OpinionsController < ApplicationController
   
   def update
     @opinion.update! opinion_params 
-    render :json => { :your_opinion => @opinion.value, :average => @opinion.wiggle.average_opinion } 
+    @wiggle = @opinion.wiggle
+    
+    respond_to do |format|
+      format.js
+    end
+
   end
 
   private
