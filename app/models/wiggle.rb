@@ -8,7 +8,7 @@ class Wiggle < ActiveRecord::Base
     if average_opinion.nil?
       return 0
     else
-      return average_opinion.round(2)
+      return average_opinion.round(1)
     end
   end
 end

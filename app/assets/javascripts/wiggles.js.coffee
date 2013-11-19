@@ -13,7 +13,6 @@ class WiggleViewModel
       counter: true,
     }) 
 
-
   update_average: (new_value) ->
     @average(new_value)
     @graph.refresh(new_value)
@@ -26,33 +25,44 @@ class WiggleViewModel
     @yourOpinion(parseFloat(@yourOpinion()) - 1)     
     @yourOpinion(@min) if @yourOpinion() < @min
 
+class Page
+  constructor: (initial_average, initial_opinion, update_url) ->
+    @initial_average = initial_average
+    @initial_opinion = initial_opinion
+    @update_url = update_url
 
-$ ->
-  initial_average = document.viewbag.initial_average
-  polling_url     = document.viewbag.polling_url
-  update_url      = document.viewbag.update_url
-  initial_opinion = document.viewbag.initial_opinion
+  initialize: -> 
+    update_opinion = @update_opinion
+    update_url = @update_url
 
-  document.wiggleViewModel = new WiggleViewModel(parseFloat(initial_opinion), initial_average)  
-  ko.applyBindings document.wiggleViewModel
+    $(".opinion-up").on "click", (e) -> 
+      e.preventDefault()
+      document.wiggleViewModel.increment()
+      update_opinion(update_url)
+  
+    $(".opinion-down").on "click", (e) -> 
+      e.preventDefault()
+      document.wiggleViewModel.decrement()
+      update_opinion(update_url)
 
-  update_opinion = (new_value) ->
+    $("input#your_opinion").on "mouseup keyup touchend", -> 
+      update_opinion(update_url)
+  
+  update_opinion: (update_url) ->
     $.ajax update_url,
       type: 'PUT'
       data: { opinion: value: document.wiggleViewModel.yourOpinion() },
       dataType: 'json'
 
-  $(".opinion-up").on "click", (e) -> 
-    e.preventDefault()
-    document.wiggleViewModel.increment()
-    update_opinion()
 
-  $(".opinion-down").on "click", (e) -> 
-    e.preventDefault()
-    document.wiggleViewModel.decrement()
-    update_opinion()
+$ ->
+  initial_average = document.viewbag.initial_average
+  update_url      = document.viewbag.update_url
+  initial_opinion = document.viewbag.initial_opinion
 
-  $("input#your_opinion").on "mouseup keyup touchend", -> 
-    update_opinion()
-
+  document.wiggleViewModel = new WiggleViewModel(parseFloat(initial_opinion), initial_average)  
+  ko.applyBindings document.wiggleViewModel
+  
+  page = new Page(initial_average, initial_opinion, update_url);
+  page.initialize()
  

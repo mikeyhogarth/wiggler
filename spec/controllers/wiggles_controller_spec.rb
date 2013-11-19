@@ -26,13 +26,5 @@ describe WigglesController do
     get :show, :id => @wiggle
     expect(response).to render_template("show")
   end
- 
-  it "returns average as json" do
-    get :average, :id => @wiggle, :format => :json
-    expect(response).to be_success
-
-    parsed_json = JSON.parse(response.body)
-    parsed_json.keys.should include("average")
- end
 
 end
