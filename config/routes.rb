@@ -1,7 +1,8 @@
 Wiggler::Application.routes.draw do
 
 
-  devise_for :users
+  devise_for :users, :controllers => { :sessions => "sessions" }
+
   get "opinions/update"
   resources :wiggles, :only => :show do
     member do
