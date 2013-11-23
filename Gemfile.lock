@@ -98,6 +98,7 @@ GEM
     mime-types (1.25)
     minitest (4.7.5)
     multi_json (1.8.2)
+    mysql2 (0.3.14)
     neat (1.4.0)
       bourbon (>= 2.1)
       sass (>= 3.2)
@@ -184,6 +185,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   knockoutjs-rails
+  mysql2
   neat
   private_pub
   rails (= 4.0.1)
