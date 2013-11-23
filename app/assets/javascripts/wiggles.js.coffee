@@ -55,20 +55,20 @@ class Page
       type: 'PUT'
       data: { opinion: value: viewModel.yourOpinion() },
       dataType: 'json'
-
-
-$ ->
-  initial_average = document.viewbag.initial_average
-  initial_opinion = document.viewbag.initial_opinion
-  update_url      = document.viewbag.update_url
- 
-  document.wiggleViewModel = new WiggleViewModel(parseInt(initial_opinion), initial_average, update_url)  
-  ko.applyBindings document.wiggleViewModel
+      
+class @WiggleShowPageReady    
+  constructor: -> 
+    initial_average = document.viewbag.initial_average
+    initial_opinion = document.viewbag.initial_opinion
+    update_url      = document.viewbag.update_url
+   
+    document.wiggleViewModel = new WiggleViewModel(parseInt(initial_opinion), initial_average, update_url)  
+    ko.applyBindings document.wiggleViewModel
+    
+    opinion_up_button         = ".opinion-up"
+    opinion_down_button       = ".opinion-down"
+    opinion_slider            = "input#your_opinion"
   
-  opinion_up_button         = ".opinion-up"
-  opinion_down_button       = ".opinion-down"
-  opinion_slider            = "input#your_opinion"
-
-  page = new Page(document.wiggleViewModel)
-  page.initialize(opinion_up_button, opinion_down_button, opinion_slider)
- 
+    page = new Page(document.wiggleViewModel)
+    page.initialize(opinion_up_button, opinion_down_button, opinion_slider)
+    

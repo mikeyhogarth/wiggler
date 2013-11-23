@@ -4,8 +4,10 @@ require "rvm/capistrano"
 set :rvm_ruby_string, 'default'
 set :rvm_type, :user
 
+load 'deploy/assets'
+
 # Using asset pipeline
-set :normalize_asset_timestamps, false
+#set :normalize_asset_timestamps, false
 
 # Bundler
 require "bundler/capistrano"
@@ -49,4 +51,23 @@ namespace :custom do
 end
 
 after "deploy:update", "deploy:cleanup" 
-after "deploy:update", "custom:symlinks"
+before "deploy:assets:precompile", "custom:symlinks"
+
+# FAYE server
+set :faye_pid, "#{deploy_to}/shared/pids/faye.pid"
+set :faye_config, "#{deploy_to}/current/private_pub.ru"
+namespace :faye do
+  desc "Start Faye"
+  task :start do
+    run "cd #{deploy_to}/current && bundle exec rackup #{faye_config} -s thin -E production -D --pid #{faye_pid}"
+  end
+  
+  desc "Stop Faye"
+  task :stop do
+    run "kill `cat #{faye_pid}` || true"
+  end
+end
+
+before 'deploy:update_code', 'faye:stop'
+after 'deploy:finalize_update', 'faye:start'
+
