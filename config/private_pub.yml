@@ -5,6 +5,6 @@ test:
   server: "http://localhost:9292/faye"
   secret_token: "secret"
 production:
-  server: "http://wiggler.nomelette.co.uk/faye"
+  server: "http://wiggler.nomelette.co.uk:9292/faye"
   secret_token: "fcca483dc5bb219fb8ee252de517a2d674366e47103804bf3d30b93c11b39e5f"
   signature_expiration: 3600 # one hour
