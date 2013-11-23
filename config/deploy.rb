@@ -57,7 +57,7 @@ set :faye_config, "#{deploy_to}/current/private_pub.ru"
 namespace :faye do
   desc "Start Faye"
     task :start do
-        run "cd #{deploy_to}/current && bundle exec rackup #{faye_config} -s thin -E production -D --pid #{faye_pid}"
+        run "cd #{deploy_to}/current && RAILS_ENV=production bundle exec rackup #{faye_config} -s thin -E production -D --pid #{faye_pid}"
           end
             
               desc "Stop Faye"
