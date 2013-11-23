@@ -12,14 +12,8 @@ describe WigglesController do
     expect(response).to be_success
     expect(response.status).to eq(200)
     assigns(:wiggle).should_not be_nil
-    assigns(:your_opinion).should_not be_nil
-  end
-
-  it "denies access to unauthenticated users" do
-    sign_out :user
-    get :show, :id => @wiggle
-    expect(response).not_to be_success
-    expect(response.status).to eq(302)
+    assigns(:your_opinion_value).should_not be_nil
+    assigns(:update_url).should_not be_nil
   end
 
   it "renders the show template" do

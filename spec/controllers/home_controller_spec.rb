@@ -14,13 +14,6 @@ describe HomeController do
     assigns(:wiggles).should_not be_nil
   end
 
-  it "denies access to unauthenticated users" do
-    sign_out :user
-    get :index
-    expect(response).not_to be_success
-    expect(response.status).to eq(302)
-  end
-
   it "renders the index template" do
     get :index
     expect(response).to render_template("index")

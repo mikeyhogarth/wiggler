@@ -1,7 +1,7 @@
-<%= viewbag   :initial_average  => @wiggle.average_opinion,
-              :initial_opinion  => @your_opinion.value,
-              :polling_url      => average_wiggle_url(@wiggle),
-              :update_url       => url_for(@your_opinion)
+<%= 
+  viewbag   :initial_average  => @wiggle.average_opinion,
+            :initial_opinion  => @your_opinion_value,
+            :update_url       => @update_url
 %>
 
 <%= subscribe_to "/wiggles/#{@wiggle.id}" %>
@@ -13,16 +13,20 @@
     <div id="gauge"></div>  
   </div>
 
+</div>
+
+<% if current_user %>
   <hr style = "border: none;" />
-  <a href = "#" class = "opinion-button opinion-down">DOWN!</a>
-  <a href = "#" class = "opinion-button opinion-up">UP!</a>
+  <div style = "text-align: center">
+    <a href = "#" class = "opinion-button opinion-down">DOWN!</a>
+    <a href = "#" class = "opinion-button opinion-up">UP!</a>
+  </div>
 
-</div>
-
-<div class = "your-opinion-controls">
-  <p><strong>Your opinion:</strong> <span data-bind="text: yourOpinion"></span><p>
-  <%= range_field_tag :your_opinion, @your_opinion.value, :in => (0..100), :step => 1, :data => {:bind => "value: yourOpinion"} %>
-</div>
+  <div class = "your-opinion-controls">
+    <p><strong>Your opinion:</strong> <span data-bind="text: yourOpinion"></span><p>
+    <%= range_field_tag :your_opinion, @your_opinion_value, :in => (0..100), :step => 1, :data => {:bind => "value: yourOpinion"} %>
+  </div>
+<% end %>
 
 <%= content_for :page_specific_js do %>
 <script>
