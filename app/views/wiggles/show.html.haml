@@ -1,4 +1,3 @@
-= subscribe_to "/wiggles/#{@wiggle.id}" 
 
 %h1= @wiggle.name
 %p= @wiggle.description
@@ -10,8 +9,9 @@
 = render :partial => "your_opinion_controls" if current_user
 
 = content_for :page_specific_js do 
+  = subscribe_to "/wiggles/#{@wiggle.id}" 
+
   :coffeescript    
     $ ->
-      new WiggleShowPageReady(#{@wiggle.average_opinion}, #{@opinion ? @opinion.value : 0},'#{ @opinion ? url_for(@opinion) : "" }' );
-    
+      new WiggleShowPageReady(#{@wiggle.average_opinion}, #{@opinion ? @opinion.value : 0},'#{ @opinion ? url_for(@opinion) : "" }' );    
 

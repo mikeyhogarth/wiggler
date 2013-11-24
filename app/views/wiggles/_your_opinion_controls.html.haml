@@ -5,6 +5,6 @@
 		= content_tag :a, "UP!", :href => "#", :class => "opinion-button opinion-up"
 		%p
 			%strong Your opinion:
-			%span{"data-bind" => "text"}
+			%span{:data => {:bind => "text: yourOpinion"}}
 
-		=range_field_tag :your_opinion, @opinion.value, :in => (0..100), :step => 1, :data => {:bind => "value: yourOpinion"}
+		= range_field_tag :your_opinion, @opinion.value, :in => (0..100), :step => 1, :data => {:bind => "value: yourOpinion"}
