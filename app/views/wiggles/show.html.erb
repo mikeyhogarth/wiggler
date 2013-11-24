@@ -1,9 +1,3 @@
-<%= 
-  viewbag   :initial_average  => @wiggle.average_opinion,
-            :initial_opinion  => @your_opinion_value,
-            :update_url       => @update_url
-%>
-
 <%= subscribe_to "/wiggles/#{@wiggle.id}" %>
 
 <%= content_tag :h1, @wiggle.name %>
@@ -17,22 +11,13 @@
 </div>
 
 <% if current_user %>
-  <hr style = "border: none;" />
-  <div style = "text-align: center">
-    <a href = "#" class = "opinion-button opinion-down">DOWN!</a>
-    <a href = "#" class = "opinion-button opinion-up">UP!</a>
-  </div>
-
-  <div class = "your-opinion-controls">
-    <p><strong>Your opinion:</strong> <span data-bind="text: yourOpinion"></span><p>
-    <%= range_field_tag :your_opinion, @your_opinion_value, :in => (0..100), :step => 1, :data => {:bind => "value: yourOpinion"} %>
-  </div>
+  <%= render "your_opinion_controls" %>
 <% end %>
 
 <%= content_for :page_specific_js do %>
 <script>
   $(document).ready(function() {
-    new WiggleShowPageReady();
+    new WiggleShowPageReady(<%= @wiggle.average_opinion %>, <%= @opinion ? @opinion.value : 0 %>,'<%= @opinion ? url_for(@opinion) : "" %>' );
   });
 </script>
 <% end %>

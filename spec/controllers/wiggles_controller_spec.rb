@@ -12,8 +12,7 @@ describe WigglesController do
     expect(response).to be_success
     expect(response.status).to eq(200)
     assigns(:wiggle).should_not be_nil
-    assigns(:your_opinion_value).should_not be_nil
-    assigns(:update_url).should_not be_nil
+    assigns(:opinion).should_not be_nil
   end
 
   it "renders the show template" do

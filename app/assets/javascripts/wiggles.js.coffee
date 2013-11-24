@@ -57,11 +57,8 @@ class Page
       dataType: 'json'
       
 class @WiggleShowPageReady    
-  constructor: -> 
-    initial_average = document.viewbag.initial_average
-    initial_opinion = document.viewbag.initial_opinion
-    update_url      = document.viewbag.update_url
-   
+  constructor: (initial_average, initial_opinion, update_url) -> 
+  
     document.wiggleViewModel = new WiggleViewModel(parseInt(initial_opinion), initial_average, update_url)  
     ko.applyBindings document.wiggleViewModel
     
