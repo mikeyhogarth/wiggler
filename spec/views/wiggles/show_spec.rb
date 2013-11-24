@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'wiggles/show.html.erb' do
+describe 'wiggles/show.html.haml' do
 
   before do
     assign(:wiggle, create(:wiggle))
@@ -9,13 +9,14 @@ describe 'wiggles/show.html.erb' do
   it 'displays a gauge and some opinion controls for logged in users' do
     assign(:opinion, create(:opinion))
     login_as :user
-    render
+
+    render 
     rendered.should have_selector("#gauge")
     rendered.should have_selector(".your-opinion-controls")
   end
 
   it 'displays only a gauge for non-logged in users' do
-    render
+    render    
     rendered.should have_selector("#gauge")
     rendered.should_not have_selector(".your-opinion-controls")
   end

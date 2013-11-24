@@ -1,0 +1,14 @@
+!!! 5
+%html
+  %head
+    %title Wiggler
+    = stylesheet_link_tag    "application", media: "all"
+    =javascript_include_tag "application" 
+    = yield :page_specific_js 
+    = csrf_meta_tags
+
+  %body
+    = render "layouts/shared/top_nav"
+    %br
+    .container= yield
+

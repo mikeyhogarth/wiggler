@@ -28,9 +28,10 @@ gem 'knockoutjs-rails'
 # gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+# gem 'jbuilder', '~> 1.2'
 
 # Front end framework
+gem 'haml'
 gem 'neat'
 
 # Authentication and Authorisation
@@ -48,6 +49,7 @@ end
 
 # Testing!!
 group :development, :test do
+  gem 'haml-rails'
   gem 'rspec-rails', '~> 2.0'
   gem 'factory_girl_rails'
   gem 'capybara'
