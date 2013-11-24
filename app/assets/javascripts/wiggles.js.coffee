@@ -1,30 +1,30 @@
-class WiggleViewModel 
-  constructor: (opinion, average, update_url) -> 
-    @_max = 100
+class WiggleViewModel
+  constructor: (opinion, average, update_url) ->
     @_min = 0
+    @_max = 100
 
     @update_url = update_url
 
     @yourOpinion = ko.observable opinion
     @average = ko.observable average
     @graph = new JustGage({
-      id: "gauge", 
-      value: @average(), 
+      id: "gauge",
+      value: @average(),
       min: @_min,
       max: @_max,
       counter: true,
-    }) 
+    })
 
   update_average: (new_value) ->
     @average(new_value)
     @graph.refresh(new_value)
 
   increment: ->
-    @yourOpinion(parseFloat(@yourOpinion()) + 10) 
+    @yourOpinion(parseFloat(@yourOpinion()) + 10)
     @yourOpinion(@_max) if @yourOpinion() > @_max
   
-  decrement: -> 
-    @yourOpinion(parseFloat(@yourOpinion()) - 10)     
+  decrement: ->
+    @yourOpinion(parseFloat(@yourOpinion()) - 10)
     @yourOpinion(@_min) if @yourOpinion() < @_min
 
 
@@ -32,20 +32,20 @@ class Page
   constructor: (viewModel) ->
     @viewModel = viewModel
 
-  initialize: (opinion_up_button, opinion_down_button, opinion_slider) -> 
+  initialize: (opinion_up_button, opinion_down_button, opinion_slider) ->
     self = @
 
-    $(opinion_up_button).on "click", (e) -> 
+    $(opinion_up_button).on "click", (e) ->
       e.preventDefault()
       self.viewModel.increment()
       self.update_opinion()
   
-    $(opinion_down_button).on "click", (e) -> 
+    $(opinion_down_button).on "click", (e) ->
       e.preventDefault()
       self.viewModel.decrement()
       self.update_opinion()
 
-    $(opinion_slider).on "mouseup keyup touchend", -> 
+    $(opinion_slider).on "mouseup keyup touchend", ->
       self.update_opinion()
   
   update_opinion: () ->
@@ -56,10 +56,10 @@ class Page
       data: { opinion: value: viewModel.yourOpinion() },
       dataType: 'json'
       
-class @WiggleShowPageReady    
-  constructor: (initial_average, initial_opinion, update_url) -> 
+class @WiggleShowPageReady
+  constructor: (initial_average, initial_opinion, update_url) ->
   
-    document.wiggleViewModel = new WiggleViewModel(parseInt(initial_opinion), initial_average, update_url)  
+    document.wiggleViewModel = new WiggleViewModel(parseInt(initial_opinion), initial_average, update_url)
     ko.applyBindings document.wiggleViewModel
     
     opinion_up_button         = ".opinion-up"
@@ -68,4 +68,4 @@ class @WiggleShowPageReady
   
     page = new Page(document.wiggleViewModel)
     page.initialize(opinion_up_button, opinion_down_button, opinion_slider)
-    
+
