@@ -14,10 +14,11 @@ class WigglyLine
   draw: () ->
     imageData = @context.getImageData(1, 0, @canvas.width-1, @canvas.height)
     @context.putImageData(imageData, 0, 0)
-    @draw_point(@average)
+    @draw_point(parseInt(@average))
     @context.clearRect(@canvas.width-1, 0, 1, @canvas.height);
 
   draw_point: (y) ->
+
     if(@current_value < y)
       @current_value += 1
     else if @current_value > y
