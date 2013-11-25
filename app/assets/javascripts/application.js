@@ -14,6 +14,4 @@
 //= require jquery_ujs
 //= require knockout
 //= require private_pub
-//= require raphael.min
-//= require justgage.min
 //= require wiggles

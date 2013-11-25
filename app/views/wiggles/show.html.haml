@@ -2,9 +2,10 @@
 %h1= @wiggle.name
 %p= @wiggle.description
 
-.average-area
-  .gauge_container    
-    #gauge   
+%hr
+
+%div
+  %canvas#wiggly_line{ :width => 500, :height => 300}
 
 = render :partial => "your_opinion_controls" if current_user
 
