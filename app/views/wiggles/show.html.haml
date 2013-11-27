@@ -4,8 +4,8 @@
 
 %hr
 
-%div
-  %canvas#wiggly_line{ :width => 500, :height => 300}
+%div{:style => "text-align:center;"}
+  %canvas#wiggly_line{ :width => 1000, :height => 300}
 
 = render :partial => "your_opinion_controls" if current_user
 
