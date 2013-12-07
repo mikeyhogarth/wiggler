@@ -11,13 +11,13 @@ describe 'wiggles/show.html.haml' do
     login_as :user
 
     render 
-    rendered.should have_selector("#gauge")
+    rendered.should have_selector("#wiggly_line")
     rendered.should have_selector(".your-opinion-controls")
   end
 
   it 'displays only a gauge for non-logged in users' do
     render    
-    rendered.should have_selector("#gauge")
+    rendered.should have_selector("#wiggly_line")
     rendered.should_not have_selector(".your-opinion-controls")
   end
 
