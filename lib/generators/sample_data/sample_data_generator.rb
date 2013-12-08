@@ -13,9 +13,12 @@ class SampleDataGenerator < Rails::Generators::Base
     print "Creating Wiggles..."
     sample = YAML.load_file(File.expand_path("lib/generators/sample_data/wiggles.yml"))
 
-    sample["wiggles"].each do |wiggle| 
+    wiggles = sample["wiggles"].take(10) 
+    
+    wiggles.each do |wiggle| 
       print "."
-      Wiggle.create(:name => wiggle["name"].chomp, :description => LOREM_IPSUM)
+      new_wiggle = Wiggle.create(:name => wiggle["name"].chomp, :description => LOREM_IPSUM)
+      new_wiggle.opinions << Opinion.create(:value => rand(100))
     end
   end
 
