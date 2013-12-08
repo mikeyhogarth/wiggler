@@ -1,13 +1,10 @@
-
 %h1= @wiggle.name
+
 %p= @wiggle.description
 
-%hr
-
 %div{:style => "text-align:center;"}
-  %canvas#wiggly_line{ :width => 1000, :height => 300}
-
-= render :partial => "your_opinion_controls" if current_user
+  %canvas#wiggly_line
+  = render :partial => "your_opinion_controls" if current_user
 
 = content_for :page_specific_js do 
   = subscribe_to "/wiggles/#{@wiggle.id}" 

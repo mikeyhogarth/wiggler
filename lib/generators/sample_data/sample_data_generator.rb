@@ -1,7 +1,7 @@
 class SampleDataGenerator < Rails::Generators::Base
   source_root File.expand_path('../templates', __FILE__)
 
-  LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultricies, felis eu volutpat imperdiet, purus elit posuere purus, in varius arcu ante commodo nunc. Sed malesuada venenatis lorem eu egestas. Ut consectetur porta nisi vehicula ornare. Curabitur ut enim lorem. Curabitur aliquet dolor tortor, et semper ipsum egestas eget. Sed eu scelerisque est, et luctus neque. Mauris mattis neque ac tellus luctus feugiat.' 
+  LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' 
  
 
   def populate_wiggles

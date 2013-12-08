@@ -15,3 +15,6 @@
 //= require knockout
 //= require private_pub
 //= require wiggles
+
+//= require foundation
+$(document).foundation();

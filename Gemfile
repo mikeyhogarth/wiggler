@@ -32,7 +32,7 @@ gem 'knockoutjs-rails'
 
 # Front end framework
 gem 'haml'
-gem 'neat'
+gem 'foundation-rails'
 
 # Authentication and Authorisation
 gem 'devise'

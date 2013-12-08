@@ -1,8 +1,8 @@
 .your-opinion-controls
-	%hr
-	%div{:style => "text-align: center;"}
-		= content_tag :a, "DOWN!", :href => "#", :class => "opinion-button opinion-down"
-		= content_tag :a, "UP!", :href => "#", :class => "opinion-button opinion-up"
+	%div
+		= content_tag :a, "DOWN", :href => "#", :class => [:button, :'opinion-down']
+		= content_tag :a, "UP", :href => "#", :class => [:button, :'opinion-up']
+
 		%p
 			%strong Your opinion:
 			%span{:data => {:bind => "text: yourOpinion"}}
