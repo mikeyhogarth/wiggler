@@ -14,7 +14,10 @@
 //= require jquery_ujs
 //= require knockout
 //= require private_pub
-//= require wiggles
+
+//= require_tree ./lib
+//= require_tree ./viewmodels
+//= require_tree ./page
 
 //= require foundation
 $(document).foundation();
