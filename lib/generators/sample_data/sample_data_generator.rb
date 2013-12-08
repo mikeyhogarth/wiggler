@@ -1,3 +1,5 @@
+require 'yaml'
+
 class SampleDataGenerator < Rails::Generators::Base
   source_root File.expand_path('../templates', __FILE__)
 
@@ -5,13 +7,19 @@ class SampleDataGenerator < Rails::Generators::Base
  
 
   def populate_wiggles
-    Wiggle.destroy_all
+    puts "Destroying previous data..."
+    Wiggle.destroy_all    
 
-    File.open(File.expand_path("lib/generators/sample_data/wiggles.yml"), "r").each_line do |line|
-      unless line.empty?
-        Wiggle.create(:name => line.chomp, :description => LOREM_IPSUM) 
-      end
+    puts "Loading new sample data..."
+    sample = YAML.load_file(File.expand_path("lib/generators/sample_data/wiggles.yml"))
+
+    print "Creating Wiggles..."
+    sample["wiggles"].each do |wiggle| 
+      print "."
+      Wiggle.create(:name => wiggle["name"].chomp, :description => LOREM_IPSUM)
     end
+
+    puts "\nSample data generation complete."
   end
 
 end
