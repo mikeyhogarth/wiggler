@@ -5,10 +5,30 @@
 %table
   %thead
     %tr
+      %th
       %th Name
-      %th Average
+      %th Description
 
     -@wiggles.each do |wiggle|
       %tr
+        %td
+          %canvas[wiggle]{:width => 50, :height => 50, :data=>{:average => wiggle.average_opinion}}
         %td= link_to wiggle.name, wiggle
-        %td= wiggle.average_opinion
+        %td= wiggle.description
+
+= content_for :page_specific_js do 
+  -@wiggles.each do |wiggle|
+    = subscribe_to "/wiggles/#{wiggle.id}" 
+
+  :coffeescript    
+    document.wiggles = {}
+
+    $ ->
+      $(".wiggle").each (index, element) =>
+        id    = $(element).attr("id")
+        avg   = $(element).data("average")
+        document.wiggles[id] = new WigglyLine(id, avg)
+     
+      for id,wiggle of document.wiggles
+        wiggle.start()
+        

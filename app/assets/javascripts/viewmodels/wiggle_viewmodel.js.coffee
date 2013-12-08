@@ -8,12 +8,9 @@ class @WiggleViewModel
     @yourOpinion = ko.observable opinion
     @average = ko.observable average
 
-    @wiggly_line = new WigglyLine(canvas_id, @average())
-    @wiggly_line.start()
-
-  update_average: (new_value) ->
-    @average(new_value)
-    @wiggly_line.set_average(new_value)
+    document.wiggles = {}
+    document.wiggles[canvas_id] = new WigglyLine(canvas_id, @average())
+    document.wiggles[canvas_id].start()
 
   increment: ->
     @yourOpinion(parseFloat(@yourOpinion()) + 10)
