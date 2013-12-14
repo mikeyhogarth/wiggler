@@ -50,14 +50,17 @@ class @WigglyLine
     @accelerate_towards y
     real_y_value = ( (y_unit * - @current_value) ) + @canvas.height
 
-    one_unit_of_color = 255 / @canvas.height
-    r = parseInt(real_y_value * one_unit_of_color)
-    g = 255 - parseInt(real_y_value * one_unit_of_color)
-    
+    #one_unit_of_color = 255 / @canvas.height
+    #r = parseInt(real_y_value * one_unit_of_color)
+    #g = 255 - parseInt(real_y_value * one_unit_of_color)
+    r = 255
+    g = 255
+    b = 255
+
     @context.beginPath()
     
     @context.lineWidth = 3
-    @context.strokeStyle="rgb(#{r},#{g},0)"
+    @context.strokeStyle="rgb(#{r},#{g},#{b})"
     @context.moveTo(@canvas.width ,real_y_value)
     @context.lineTo(@canvas.width - 1,real_old_y_value)
     @context.stroke()

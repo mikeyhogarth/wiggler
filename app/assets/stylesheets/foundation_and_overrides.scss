@@ -2,6 +2,27 @@
 // FOUNDATION SETTINGS
 //
 
+// Mikey's overrides
+$body-bg: #ff8400;
+$body-font-color: #FFF;
+$header-font-color: #FFF;
+
+$primary-color: #ff8400;
+$secondary-color: #ff3C00;
+
+body
+{
+  a
+  {
+    color: #fff;
+  }
+  a:hover
+  {
+    color: #fff;
+  }
+}
+
+
 // Uncomment to use rem-calc() in your settings
 // @import "foundation/functions";
 
@@ -170,7 +191,7 @@
 // $include-html-nav-classes: $include-html-classes;
 
 // We use this to set the background color for the breadcrumb container.
-// $crumb-bg: lighten($secondary-color, 5%);
+$crumb-bg: lighten($secondary-color, 5%);
 
 // We use these to set the padding around the breadcrumbs.
 // $crumb-padding: rem-calc(9 14 9);
@@ -186,13 +207,25 @@
 // We use these to set various text styles for breadcrumbs.
 // $crumb-font-size: rem-calc(11);
 // $crumb-font-color: $primary-color;
-// $crumb-font-color-current: #333;
+$crumb-font-color-current: #fff;
 // $crumb-font-color-unavailable: #999;
 // $crumb-font-transform: uppercase;
 // $crumb-link-decor: underline;
 
+.breadcrumbs
+{
+  a
+  {
+    color: #fff;
+  }
+  a:hover
+  {
+    color: #fff;
+  }
+}
+
 // We use these to control the slash between breadcrumbs
-// $crumb-slash-color: #aaa;
+$crumb-slash-color: #fff;
 // $crumb-slash: "/";
 
 // Button Groups
@@ -327,7 +360,7 @@
 // $form-label-pointer: pointer;
 // $form-label-font-size: rem-calc(14);
 // $form-label-font-weight: normal;
-// $form-label-font-color: lighten(#000, 30%);
+$form-label-font-color: #fff;
 // $form-label-bottom-margin: rem-calc(8);
 // $input-font-family: inherit;
 // $input-font-color: rgba(0,0,0,0.75);
@@ -834,8 +867,8 @@
 // $include-html-table-classes: $include-html-classes;
 
 // These control the background color for the table and even rows
-// $table-bg: #fff;
-// $table-even-row-bg: #f9f9f9  ;
+$table-bg: $primary-color;
+$table-even-row-bg: $primary-color;
 
 // These control the table cell border style
 // $table-border-style: solid;
@@ -843,16 +876,16 @@
 // $table-border-color: #ddd;
 
 // These control the table head styles
-// $table-head-bg: #f5f5f5  ;
+$table-head-bg:  $primary-color;  
 // $table-head-font-size: rem-calc(14);
-// $table-head-font-color: #222;
+$table-head-font-color: #fff;
 // $table-head-font-weight: bold;
 // $table-head-padding: rem-calc(8 10 10);
 
 // These control the row padding and font styles
 // $table-row-padding: rem-calc(9 10);
 // $table-row-font-size: rem-calc(14);
-// $table-row-font-color: #222;
+$table-row-font-color: #fff;
 // $table-line-height: rem-calc(18);
 
 // These are for controlling the display and margin of tables
@@ -927,7 +960,7 @@
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-// $topbar-bg-color: #333;
+$topbar-bg-color: #222;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
@@ -990,4 +1023,6 @@
 // Sticky Class
 // $topbar-sticky-class: ".sticky";
 // $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
+
+
 @import 'foundation';
