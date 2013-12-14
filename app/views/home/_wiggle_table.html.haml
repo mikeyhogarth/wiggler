@@ -1,0 +1,18 @@
+-if wiggles.any?
+  %table
+    %thead
+      %tr
+        %th
+        %th Name
+        %th Description
+        %th Broadcasting
+        
+      -wiggles.each do |wiggle|
+        %tr
+          %td
+            %canvas[wiggle]{:width => 50, :height => 50, :data=>{:average => wiggle.average_opinion}}
+          %td= link_to wiggle.name, wiggle
+          %td= wiggle.description
+          %td= current ? "Wiggling now!" : short_date(wiggle.start)
+- else
+  %p Check back later!

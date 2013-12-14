@@ -2,22 +2,14 @@
 
 %p Some kind of tagline that we'll think of later.
 
-%table
-  %thead
-    %tr
-      %th
-      %th Name
-      %th Description
+%h3 Current Wiggles
+= render partial: "wiggle_table", locals: {wiggles: @current_wiggles, current: true }
 
-    -@wiggles.each do |wiggle|
-      %tr
-        %td
-          %canvas[wiggle]{:width => 50, :height => 50, :data=>{:average => wiggle.average_opinion}}
-        %td= link_to wiggle.name, wiggle
-        %td= wiggle.description
+%h3 Upcoming Wiggles
+= render partial: "wiggle_table", locals: {wiggles: @upcoming_wiggles, current: false }
 
 = content_for :page_specific_js do 
-  -@wiggles.each do |wiggle|
+  -@current_wiggles.each do |wiggle|
     = subscribe_to wiggle.channel 
 
   :coffeescript    

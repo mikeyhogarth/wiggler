@@ -11,7 +11,8 @@ describe HomeController do
     get :index
     expect(response).to be_success
     expect(response.status).to eq(200)
-    assigns(:wiggles).should_not be_nil
+    assigns(:current_wiggles).should_not be_nil
+    assigns(:upcoming_wiggles).should_not be_nil
   end
 
   it "renders the index template" do
