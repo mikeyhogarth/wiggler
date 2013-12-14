@@ -66,6 +66,7 @@ namespace :faye do
   end
 end
 
+after "deploy", "deploy:migrate"
 before 'deploy:update_code', 'faye:stop'
 after 'deploy:finalize_update', 'faye:start'
 
