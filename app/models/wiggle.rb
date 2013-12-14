@@ -11,4 +11,9 @@ class Wiggle < ActiveRecord::Base
       return average_opinion.round(1)
     end
   end
+
+  def channel
+    "/wiggles/#{id}"
+  end
+
 end

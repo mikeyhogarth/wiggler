@@ -19,4 +19,9 @@ describe Wiggle do
     expect(wiggle.average_opinion).to eq(0)
   end
 
+  it "can tell you its channel" do
+    wiggle = create(:wiggle)
+    expect(wiggle.channel).to eq("/wiggles/#{wiggle.id}")
+  end
+
 end

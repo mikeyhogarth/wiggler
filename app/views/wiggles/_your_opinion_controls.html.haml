@@ -1,10 +1,10 @@
 .your-opinion-controls
 	%div
-		= content_tag :a, "DOWN", :href => "#", :class => [:button, :'opinion-down']
-		= content_tag :a, "UP", :href => "#", :class => [:button, :'opinion-up']
+		= content_tag :a, "DOWN", :href => "#", :data => {:bind => "click:decrementOpinion" }, :class => :button
+		= content_tag :a, "UP", :href => "#", :data => {:bind => "click:incrementOpinion" }, :class => :button
 
 		%p
 			%strong Your opinion:
 			%span{:data => {:bind => "text: yourOpinion"}}
 
-		= range_field_tag :your_opinion, @opinion.value, :in => (0..100), :step => 1, :data => {:bind => "value: yourOpinion"}
+		= range_field_tag :your_opinion_slider, @opinion.value, :in => (0..100), :step => 1, :data => {:bind => "value: yourOpinion"}

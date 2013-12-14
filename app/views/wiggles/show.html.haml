@@ -7,7 +7,7 @@
   = render :partial => "your_opinion_controls" if current_user
 
 = content_for :page_specific_js do 
-  = subscribe_to "/wiggles/#{@wiggle.id}" 
+  = subscribe_to @wiggle.channel 
 
   :coffeescript    
     $ ->
