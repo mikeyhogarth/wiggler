@@ -4,8 +4,8 @@ class Wiggle < ActiveRecord::Base
   has_many :opinions
   
   #Scopes
-  scope :current, where("start < ? and end > ?", DateTime.now, DateTime.now)
-  scope :upcoming, where("start > ? and start < ?", DateTime.now, DateTime.now + 1.week)
+  scope :current, -> { where("start < ? and end > ?", DateTime.now, DateTime.now) }
+  scope :upcoming, -> { where("start > ? and start < ?", DateTime.now, DateTime.now + 1.week) }
 
   def average_opinion
     average_opinion = opinions.average :value 

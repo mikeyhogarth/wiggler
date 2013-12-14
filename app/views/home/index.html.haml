@@ -1,11 +1,13 @@
-%h1 Be Opinionated
+%h1 
+  Wiggler 
+  %small Be Opinionated
 
-%p Some kind of tagline that we'll think of later.
+%hr
 
-%h3 Current Wiggles
+%h4 Current Wiggles
 = render partial: "wiggle_table", locals: {wiggles: @current_wiggles, current: true }
 
-%h3 Upcoming Wiggles
+%h4 Upcoming Wiggles
 = render partial: "wiggle_table", locals: {wiggles: @upcoming_wiggles, current: false }
 
 = content_for :page_specific_js do 
