@@ -1,19 +1,19 @@
 class @WiggleViewModel
-  constructor: (opinion, average, update_url, canvas_id) ->
+  constructor: (opinion, average, update_url) ->
     @UPDATE_URL = update_url
 
     @yourOpinion = ko.observable opinion
     @average = ko.observable average
 
-    ko.applyBindings @
-
+    #Unobtrusive event handler for slider
     $("input#your_opinion_slider").on "mouseup keyup touchend", (e) =>
       @updateOpinion(e.target.value)
 
-    document.wiggles = {}
-    document.wiggles[canvas_id] = new WigglyLine(canvas_id, @average())
-    document.wiggles[canvas_id].start()
+    ko.applyBindings @
 
+    wiggles = new WigglyLineCollection(".wiggle")
+    wiggles.start_wiggling()
+ 
   incrementOpinion: ->
     @updateOpinion(parseFloat(@yourOpinion()) + 10)
   

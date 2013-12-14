@@ -5,7 +5,7 @@
 %p= @wiggle.description
 
 %div{:style => "text-align:center;"}
-  %canvas[@wiggle]
+  %canvas[@wiggle]{:data =>{:average => @wiggle.average_opinion } }
   = render :partial => "your_opinion_controls" if current_user
 
 = content_for :page_specific_js do 
@@ -13,5 +13,5 @@
 
   :coffeescript    
     $ ->
-      new WiggleShowPageReady(#{@wiggle.average_opinion}, #{@opinion ? @opinion.value : 0},'#{ @opinion ? url_for(@opinion) : "" }', "wiggle_#{@wiggle.id}" );    
+      new WiggleShowPageReady(#{@wiggle.average_opinion}, #{@opinion ? @opinion.value : 0},'#{ @opinion ? url_for(@opinion) : "" }');    
 

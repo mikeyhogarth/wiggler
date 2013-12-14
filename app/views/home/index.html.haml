@@ -9,7 +9,7 @@
 = render partial: "wiggle_table", locals: {wiggles: @upcoming_wiggles, current: false }
 
 = content_for :page_specific_js do 
-  -@current_wiggles.each do |wiggle|
+  -(@current_wiggles + @upcoming_wiggles).each do |wiggle|
     = subscribe_to wiggle.channel 
 
   :coffeescript    
